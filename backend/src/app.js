@@ -2,12 +2,17 @@ require("dotenv").config();
 
 const express = require("express");
 const sequelize = require("./config/database");
+const userRoutes = require("./routes/userRoutes");
+
+
 
 require("./models/User");
 
 const app = express();
 
 app.use(express.json());
+
+app.use("/api", userRoutes);
 
 app.get("/", (req, res) => {
     res.send("User CRUD API is running");
